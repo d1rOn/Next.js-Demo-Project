@@ -1,0 +1,42 @@
+@use 'sass:color';
+@import '~/styles/common';
+
+.Textarea {
+  .label {
+    margin-bottom: 0.6875rem;
+    transition: $hover-transition;
+
+    &.error {
+      color: $danger-color;
+    }
+  }
+
+  .textarea {
+    width: 100%;
+    min-height: 8rem;
+    padding: 0.75rem 1rem;
+    font-family: inherit;
+    resize: none;
+    background: var(--input-background-color);
+    border-color: var(--input-border-color);
+    border-style: solid;
+    border-width: var(--input-border-width);
+    border-radius: var(--input-border-radius);
+    transition: $hover-transition border;
+
+    &:hover {
+      border-color: var(--input-hover-border-color);
+      opacity: 1;
+    }
+
+    &:focus-visible {
+      outline: none;
+    }
+  }
+
+  &.error {
+    .textarea {
+      border-color: $danger-color;
+    }
+  }
+}

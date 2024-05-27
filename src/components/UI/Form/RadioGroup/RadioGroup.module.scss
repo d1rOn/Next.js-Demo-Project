@@ -1,0 +1,18 @@
+@import '~/styles/common';
+
+.radioGroup {
+  display: flex;
+  flex-direction: column;
+
+  &.error {
+    color: $danger-color;
+  }
+
+  .radios {
+    display: flex;
+    flex: 1 0;
+    gap: 1.5rem;
+    align-items: center;
+    min-height: var(--form-control-height);
+  }
+}

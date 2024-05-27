@@ -1,0 +1,67 @@
+stages:
+ # - build
+  - test
+  - deploy
+
+lint-test-job:
+  tags:
+    - test
+  stage: test
+  image: node:latest
+  script:
+    - cd src
+    - npm ci --legacy-peer-deps
+    - npm run lint
+    - echo "No lint issues found."
+
+# deploy-job:
+#   only:
+#     - dev
+#   tags:
+#     - dev
+#   stage: deploy
+#   image: docker/compose:latest
+#   services:
+#     - docker:dind
+#   variables:
+#     BACK_URI: https://erth.dev.zagroza.agency:8080
+#     FRONT_URI: https://erth.dev.zagroza.agency
+#     CI_COMMIT_SHORT_SHA: $CI_COMMIT_SHORT_SHA
+#     CI_COMMIT_TIMESTAMP: $CI_COMMIT_TIMESTAMP
+#     CI_COMMIT_TITLE: $CI_COMMIT_TITLE
+#   script:
+#     - cp -TRv back-initial-data/ .
+#     - chmod -R 777 ./uploads
+#     - chmod -R 777 ./database
+#     - chmod -R 777 ./extensions
+#     - chmod 0444 ./database/my.cnf
+#     - docker image prune -f
+#     - docker-compose down
+#     - docker-compose build --no-cache
+#     - docker-compose up -d
+
+# deploy-preprod-job:
+#   only:
+#     - main
+#   tags:
+#     - preprod
+#   stage: deploy
+#   image: docker/compose:latest
+#   services:
+#     - docker:dind
+#   variables:
+#     BACK_URI: https://preprod.erth.webvision360.com:8080
+#     FRONT_URI: https://preprod.erth.webvision360.com
+#     CI_COMMIT_SHORT_SHA: $CI_COMMIT_SHORT_SHA
+#     CI_COMMIT_TIMESTAMP: $CI_COMMIT_TIMESTAMP
+#     CI_COMMIT_TITLE: $CI_COMMIT_TITLE
+#   script:
+#     - cp -TRv back-initial-data/ .
+#     - chmod -R 777 ./uploads
+#     - chmod -R 777 ./database
+#     - chmod -R 777 ./extensions
+#     - chmod 0444 ./database/my.cnf
+#     - docker image prune -f
+#     - docker-compose down
+#     - docker-compose build --no-cache
+#     - docker-compose up -d

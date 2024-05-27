@@ -1,0 +1,19 @@
+version: '2.2'
+services:
+  front:
+    build:
+      context: src/
+      dockerfile: Dockerfile
+    restart: unless-stopped
+    environment:
+      NEXT_PUBLIC_FRONT_URI: ${FRONT_URI}
+      NEXT_PUBLIC_CONTACT_FORM_FILE_SIZE_LIMIT: ${FORM_FILE_SIZE_LIMIT:-2}
+      TZ: ${TZ}
+    ports:
+      - 127.0.0.1:${FRONT_PORT:-3009}:3000
+    networks:
+      - webappnetwork
+
+networks:
+  webappnetwork:
+    driver: bridge

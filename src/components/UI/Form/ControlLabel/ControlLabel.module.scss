@@ -1,0 +1,22 @@
+@import '~/styles/common';
+
+.label {
+  display: block;
+  margin-bottom: 0.5rem;
+  font-size: var(--label-text-size);
+  line-height: var(--label-text-lh);
+  text-transform: uppercase;
+
+  @include media-tablet {
+    font-size: 0.625em;
+  }
+}
+
+.subLabel {
+  margin-bottom: 0.5rem;
+  font-size: calc(var(--label-text-size) * 0.714);
+  font-style: italic;
+  line-height: var(--label-text-lh);
+  color: var(--white);
+  text-transform: none;
+}

@@ -1,0 +1,28 @@
+@import '~/styles/common';
+
+.message {
+  font-size: 0;
+  font-weight: 700;
+  line-height: var(--label-text-lh);
+  opacity: 0;
+  transition:
+    $hover-transition margin,
+    $hover-transition opacity,
+    $hover-transition font-size;
+
+  &_error {
+    margin-top: var(--inner-vertical-margin);
+    font-size: var(--label-text-size);
+    color: $rubio-color;
+    opacity: 1;
+  }
+
+  &_success {
+    margin-top: var(--inner-vertical-margin);
+    font-size: var(--label-text-size);
+    background: $green-gradient;
+    background-clip: text;
+    opacity: 1;
+    -webkit-text-fill-color: transparent;
+  }
+}

@@ -1,0 +1,152 @@
+{
+  "env": {
+    "browser": true,
+    "es2022": true
+  },
+  "extends": [
+    "plugin:@typescript-eslint/recommended",
+    "next",
+    "next/core-web-vitals",
+    "plugin:react/recommended",
+    "airbnb",
+    "airbnb-typescript",
+    "plugin:@next/next/recommended",
+    "prettier"
+  ],
+  "overrides": [],
+  "parser": "@typescript-eslint/parser",
+  "parserOptions": {
+    "ecmaVersion": 13,
+    "sourceType": "module",
+    "project": "./tsconfig.json"
+  },
+  "plugins": [
+    "react",
+    "@typescript-eslint",
+    "simple-import-sort",
+    "prettier",
+    "spellcheck"
+  ],
+  "rules": {
+    "prettier/prettier": [
+      "error",
+      {
+        "endOfLine": "auto"
+      }
+    ],
+    "spellcheck/spell-checker": [
+      "error",
+      {
+        "comments": true,
+        "strings": true,
+        "identifiers": true,
+        "lang": "en_US",
+        "skipWords": [],
+        "skipIfMatch": [
+          "https?://[^\\s]*", // Skip HTTP and HTTPS URLs
+          "/[A-Za-z0-9/_-]+\\.[A-Za-z]+", // Skip paths with file extensions
+          "^[A-Za-z]+$", // Skip single words (likely identifiers)
+          "^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+.[a-zA-Z0-9-.]+$" // Skip email addresses
+        ],
+        "skipWordIfMatch": [
+          "birthdate",
+          "Titre",
+          "facebook",
+          "Breakpoint",
+          "poppins",
+          "linebreak",
+          "vw",
+          "zipcode",
+          "semibold",
+          "devtools",
+          "Devtools",
+          "tanstack",
+          "checkbox",
+          "Checkbox",
+          "scalable",
+          "msapplication",
+          "radix",
+          "rect",
+          "progressbar",
+          "slidedown"
+        ],
+        "minLength": 5
+      }
+    ],
+    "import/prefer-default-export": "off",
+    "react/require-default-props": "off",
+    "react/react-in-jsx-scope": "off",
+    "react/prop-types": "off",
+    "react/jsx-props-no-spreading": "off",
+    "jsx-a11y/anchor-is-valid": "off",
+    "no-plusplus": "off",
+    "react/function-component-definition": [
+      2,
+      {
+        "namedComponents": ["arrow-function", "function-declaration"]
+      }
+    ],
+    "jsx-a11y/alt-text": [
+      2,
+      {
+        "elements": ["img", "object", "area", "input[type=\"image\"]"],
+        "img": ["Image"],
+        "object": ["Object"],
+        "area": ["Area"],
+        "input[type=\"image\"]": ["InputImage"]
+      }
+    ],
+    "linebreak-style": "off",
+    /* WARNINGS */
+    "react/no-unknown-property": [
+      2,
+      {
+        "ignore": ["jsx", "global"]
+      }
+    ],
+    "simple-import-sort/imports": [
+      1,
+      {
+        "groups": [
+          // External packages including React, Next.js, and other npm packages.
+          ["^react$", "^next", "^[a-z]", "^clsx$"],
+          // Packages starting with '@' (including type imports from these packages).
+          ["^@", "@zgrz/functions$"],
+          // Internal components, parent and relative imports.
+          [
+            "^~/components/",
+            "^\\.\\.(?!/?$)",
+            "^\\.\\./?$",
+            "^\\./(?=.*/)(?!/?$)",
+            "^\\.(?!/?$)",
+            "^\\./?$"
+          ],
+          ["^~/providers"],
+          ["^~/contexts"],
+          ["^~/services"],
+          ["^~/hooks"],
+          ["^~/utils", "\\.util$"],
+          ["^~/constants", "\\.const$"],
+          ["^~/data", "\\.data$"],
+          ["^~/enums", "\\.enum$"],
+          ["^~/interfaces", "\\.interface$"],
+          // Type imports from internal directories.
+          ["^~/types"],
+          // External library style imports typically from 'dist' directories.
+          ["^.*\\/dist\\/.*\\.s?css$"],
+          // Internal and local style imports.
+          ["^.+\\.s?css$"]
+        ]
+      }
+    ],
+    "import/order": "off",
+    "no-console": "error"
+  },
+  "settings": {
+    "import/resolver": {
+      "node": {
+        "extensions": [".js", ".jsx", ".ts", ".tsx"]
+      }
+    }
+  }
+}

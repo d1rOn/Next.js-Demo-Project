@@ -1,0 +1,251 @@
+@import '~/styles/common';
+
+$primary-gradeint-hover: linear-gradient(
+  66.04deg,
+  #ff9400 0%,
+  #f70000 49%,
+  #f70000 50%,
+  #ff9400 100%
+);
+$secondary-gradient-hover: linear-gradient(
+  66.04deg,
+  #dd2497 0%,
+  #8b00ff 49%,
+  #8b00ff 50%,
+  #dd2497 100%
+);
+
+.primary {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0.75rem 1.25rem;
+  font-family: inherit;
+  font-size: var(--button-text-size);
+  font-weight: 700;
+  line-height: var(--button-text-lh);
+  color: var(--white);
+  text-align: center;
+  text-transform: uppercase;
+  vertical-align: middle;
+  cursor: pointer;
+  background-image: $primary-gradeint-hover;
+  background-size: 200% auto;
+  border: none;
+  border-radius: 0.625rem;
+  transition: $hover-transition background-position;
+
+  span {
+    transition:
+      $hover-transition background-position,
+      $hover-transition opacity,
+      $hover-transition visibility;
+  }
+
+  &:hover {
+    background-position: 200% center;
+  }
+
+  @include media-mobile {
+    padding: 0.625rem 0.9375rem;
+  }
+}
+
+.spinner {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  font-size: 0.25rem;
+  transition: $hover-transition all;
+  transform: translate(-50%, -50%);
+}
+
+.pending {
+  pointer-events: none;
+  cursor: default;
+
+  & :global(.spinner) {
+    transition:
+      $hover-transition opacity,
+      $hover-transition visibility;
+  }
+
+  & :global(.enter-active),
+  & :global(.enter-done) {
+    visibility: visible;
+    opacity: 1;
+  }
+
+  & :global(.exit-active),
+  & :global(.exit),
+  & :global(.spinner),
+  span {
+    visibility: hidden;
+    opacity: 0;
+  }
+}
+
+.disabled,
+.primary:disabled {
+  pointer-events: none;
+  cursor: default;
+  background: #6a6a6a;
+  filter: grayscale(1);
+}
+
+.icon {
+  position: relative;
+  width: 1.125rem;
+  transition: $hover-transition transform;
+
+  > span {
+    vertical-align: middle;
+  }
+
+  @include media-mobile {
+    width: 0.75rem;
+  }
+}
+
+.white span {
+  position: relative;
+  color: transparent;
+  background-image: $secondary-gradient-hover;
+  background-clip: text;
+  background-size: 200% auto;
+  -webkit-text-fill-color: transparent;
+}
+
+.transparent {
+  position: relative;
+  padding: 0.75rem 1.25rem;
+  background: transparent;
+
+  .spinner {
+    color: $rubio-color;
+  }
+
+  span {
+    background-image: $primary-gradeint-hover;
+    background-clip: text;
+    background-size: 200% auto;
+    -webkit-text-fill-color: transparent;
+  }
+
+  &::after {
+    position: absolute;
+    inset: 0;
+    width: auto;
+    height: auto;
+    content: '';
+    background: $primary-gradeint-hover border-box;
+    background-size: 200% auto;
+    border: 2px solid transparent;
+    border-radius: 0.625rem;
+    opacity: 1;
+    mask:
+      $primary-gradeint-hover padding-box,
+      $primary-gradeint-hover;
+    mask-composite: exclude;
+    transition: $hover-transition all;
+  }
+
+  &:hover {
+    .icon {
+      transform: scale(1.05);
+    }
+
+    &::after {
+      background-position: 200% center;
+    }
+
+    span {
+      background-position: 200% center;
+    }
+  }
+
+  @include media-mobile {
+    padding: 0.625rem 0.9375rem;
+  }
+}
+
+.squared {
+  width: 2.75rem;
+  height: 2.75rem;
+
+  @include media-mobile {
+    width: 2.3125rem;
+    height: 2.3125rem;
+  }
+}
+
+.circle {
+  width: 2.75rem;
+  height: 2.75rem;
+  border-radius: 50%;
+
+  &::before,
+  &::after {
+    border-radius: 50%;
+  }
+
+  @include media-mobile {
+    width: 2.3125rem;
+    height: 2.3125rem;
+  }
+}
+
+.white {
+  background: var(--white);
+
+  &.transparent {
+    padding: 0.625rem 1.25rem;
+    overflow: hidden;
+    color: var(--white);
+    background: transparent;
+    border: 2px solid var(--white);
+
+    span {
+      color: var(--white);
+      background: none;
+      -webkit-text-fill-color: var(--white);
+    }
+
+    &::after {
+      content: none;
+    }
+
+    &::before {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      content: '';
+      background-color: rgb(0 0 0 / 19.2%);
+      opacity: 0;
+      transition: $hover-transition opacity;
+    }
+
+    &:hover {
+      &::before {
+        opacity: 1;
+      }
+    }
+  }
+
+  &:hover span {
+    background-position: 200% center;
+  }
+}
+
+// ---- with filter changes is not noticeable
+.white:disabled span,
+.white.disabled span {
+  -webkit-text-fill-color: $disabled-text-color;
+}
+
+.primary:active span {
+  transform: translateY(2px);
+}

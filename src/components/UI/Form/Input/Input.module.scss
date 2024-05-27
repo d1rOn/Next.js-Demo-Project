@@ -1,0 +1,112 @@
+@use 'sass:color';
+@import '~/styles/common';
+
+.input {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  height: var(--form-control-height);
+  padding: var(--input-border-width);
+  transition: $hover-transition;
+
+  input {
+    width: 100%;
+    padding: 0 var(--form-control-paddings-inline);
+    font-weight: 400;
+    color: #000;
+    background: var(--input-background-color);
+    border: 0;
+    border-radius: var(--input-border-radius);
+    transition: inherit;
+  }
+
+  input[type='date'] {
+    &::-webkit-calendar-picker-indicator {
+      cursor: pointer;
+    }
+  }
+
+  &__badge {
+    position: absolute;
+    top: 50%;
+    right: var(--form-control-paddings-inline);
+    z-index: 1;
+    display: flex;
+    width: calc(1.429 * var(--form-control-text-size));
+    height: calc(1.429 * var(--form-control-text-size));
+    pointer-events: none;
+    opacity: 0;
+    transition: $hover-transition;
+    transform: translateY(-50%);
+
+    &-custom {
+      opacity: 1;
+    }
+  }
+
+  &.disabled {
+    input {
+      color: $disabled-text-color;
+      background: #f4f5f7;
+    }
+
+    &::before {
+      background: $disabled-border-color;
+      opacity: 1;
+    }
+  }
+
+  &::before {
+    position: absolute;
+    inset: 0;
+    z-index: -1;
+    content: '';
+    background: var(--input-border-color);
+    border-radius: var(--input-border-radius);
+    opacity: 1;
+    transition: inherit;
+  }
+
+  &:hover::before {
+    background: var(--input-hover-border-color);
+    opacity: 1;
+  }
+
+  &.focused {
+    box-shadow:
+      0 80px 80px -20px rgb(245 47 110 / 8%),
+      0 30px 24px -10px rgb(245 47 110 / 5%),
+      0 12px 10px -6px rgb(245 47 110 / 4%),
+      0 4px 4px -4px rgb(30 33 44 / 3%);
+
+    input {
+      outline: 0;
+    }
+
+    &::before {
+      background: $primary-gradient;
+      opacity: 1;
+    }
+  }
+
+  &.error {
+    .input__bagde-error {
+      opacity: 1;
+    }
+
+    &::before {
+      background: $danger-color;
+      opacity: 1;
+    }
+
+    .input__message-error {
+      top: calc(100% + 4px);
+    }
+  }
+
+  &.success {
+    .input__badge-success {
+      opacity: 1;
+    }
+  }
+}

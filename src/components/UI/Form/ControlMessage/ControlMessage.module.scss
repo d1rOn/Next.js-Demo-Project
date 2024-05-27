@@ -1,0 +1,14 @@
+@import '~/styles/common';
+
+.message {
+  padding-top: 0.917em;
+  font-size: 0.75em;
+  line-height: 150%;
+  color: $danger-color;
+  text-align: left;
+  transition: $hover-transition;
+
+  &__success {
+    color: $success-color;
+  }
+}

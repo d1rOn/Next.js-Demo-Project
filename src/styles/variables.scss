@@ -1,0 +1,29 @@
+// ----------- colors ----------------
+
+$black-color: #303030;
+$kurmi-color: #ffb200;
+$ambra-color: #ff9400;
+$rubio-color: #f70000;
+$mala-color: #c4ffa8;
+$agatea-color: #43c0a6;
+$laven-color: #dd2497;
+$ameth-color: #8b00ff;
+$danger-color: #ff4242;
+$success-color: #03cea4;
+$accent-title-color: #ffb200;
+$main-text-color: $black-color;
+$disabled-text-color: #363848;
+$disabled-border-color: rgb(48 48 48 / 20%);
+$border-color: #b3b7bc;
+
+// ---------- gradients ---------------
+
+$primary-gradient: linear-gradient(66.04deg, #ff9400 0%, #f70000 100%);
+$secondary-gradient: linear-gradient(66.04deg, #dd2497 0%, #8b00ff 100%);
+$green-gradient: linear-gradient(66.04deg, #c4ffa8 0%, #43c0a6 100%);
+
+// ------- transition ---------
+
+$basic-transition: 0.3s ease;
+$hover-transition: $basic-transition;
+$smooth-hover-transition: 0.8s ease;

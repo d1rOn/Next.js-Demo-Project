@@ -1,0 +1,72 @@
+@import '~/styles/common';
+
+.columnsRow {
+  $column-gap: 2.5rem;
+
+  display: flex;
+  margin-inline: $column-gap / -2;
+
+  @include media-mobile {
+    flex-wrap: wrap;
+
+    .column:first-child,
+    .column:last-child {
+      width: 100%;
+    }
+
+    .column:last-child {
+      height: 36.875rem;
+      padding: 0;
+    }
+  }
+}
+
+.formBox {
+  position: relative;
+  max-width: 980px;
+  margin: auto;
+
+  h1 {
+    margin: 0 auto 2rem;
+    text-align: center;
+  }
+}
+
+.formRow {
+  $column-gap: 0.625rem;
+
+  display: flex;
+  margin-inline: $column-gap / -2;
+  margin-bottom: 1.6875rem;
+
+  .formColumn {
+    width: 100%;
+    padding-inline: $column-gap / 2;
+  }
+}
+
+.form {
+  display: grid;
+  grid-template: repeat(8, auto) / repeat(2, auto);
+  grid-template-areas:
+    'firstName lastName'
+    'email phoneNumber'
+    'helpType contactPref'
+    'file file'
+    'password passwordConfirmation'
+    'about about'
+    'argeement argeement'
+    'submit submit';
+  gap: 20px 28px;
+
+  fieldset {
+    padding: 0;
+    border: 0;
+  }
+}
+
+.submitButtonContainer {
+  @include media-mobile {
+    text-align: center;
+  }
+}

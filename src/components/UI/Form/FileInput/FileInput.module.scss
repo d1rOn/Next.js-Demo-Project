@@ -1,0 +1,49 @@
+@use 'sass:color';
+@import '~/styles/common';
+
+.fileInput {
+  position: relative;
+  display: flex;
+  align-items: center;
+  height: var(--form-control-height);
+  padding: 0 1rem;
+  cursor: pointer;
+  background: var(--input-background-color);
+  border-color: var(--input-border-color);
+  border-style: solid;
+  border-width: var(--input-border-width);
+  border-radius: 0.25rem;
+  transition: $hover-transition;
+
+  &:hover {
+    border-color: var(--input-hover-border-color);
+  }
+
+  &__fileName {
+    font-size: var(--form-control-text-size);
+  }
+
+  input {
+    display: none;
+  }
+
+  &__input {
+    position: absolute;
+    top: 50%;
+    right: 0.8125rem;
+    display: flex;
+    transform: translateY(-50%);
+  }
+
+  &__clear {
+    cursor: pointer;
+  }
+
+  &.error {
+    border-color: $danger-color;
+  }
+
+  &__placeholder {
+    color: var(--form-control-placeholder-color);
+  }
+}

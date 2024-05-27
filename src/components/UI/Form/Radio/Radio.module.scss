@@ -1,0 +1,54 @@
+@import '~/styles/common';
+
+.radioButton {
+  padding-left: 1.875rem;
+
+  input {
+    display: none;
+  }
+
+  .radioLabel {
+    position: relative;
+    font-size: var(--form-control-text-size);
+    cursor: pointer;
+    transition: $hover-transition;
+
+    &::before {
+      position: absolute;
+      top: 50%;
+      right: calc(100% + 0.75rem);
+      width: 1rem;
+      height: 1rem;
+      content: '';
+      border: 1px solid $black-color;
+      border-radius: 1rem;
+      transition: inherit;
+      transform: translateY(-50%);
+    }
+
+    &::after {
+      position: absolute;
+      top: 50%;
+      right: calc(100% + 0.75rem);
+      width: 0.5rem;
+      height: 0.5rem;
+      content: '';
+      background-color: $kurmi-color;
+      border-radius: 0.5rem;
+      transition: inherit;
+      transition-timing-function: cubic-bezier(0.67, 0.76, 0.55, 1.5);
+      transform: translateX(-0.3125rem) translateY(-50%) scale(0);
+      transform-origin: center center;
+    }
+  }
+
+  input:checked + .radioLabel {
+    &::before {
+      border-color: $kurmi-color;
+    }
+
+    &::after {
+      transform: translateX(-0.3125rem) translateY(-50%) scale(1);
+    }
+  }
+}
